@@ -1,0 +1,21 @@
+<h1>Список товаров</h1>
+<p><%= link_to 'Добавить товар', new_item_path %></p>
+<table>
+	<tr>
+		<th>Название</th>
+		<th>Описание</th>
+		<th>Цена</th>
+	</tr>
+	<%= @items.each do |item| %>
+	    <tr>
+	    	<td><%= item.name %></td>
+	    	<td><%= item.body %></td>
+	    	<td><%= item.price %></td>
+	    	<td><%= link_to 'Посмотреть товар', item_path(item) %></td>
+	    	<td><%= link_to 'Удалить', item_path(item),
+	    	        method: :delete,
+	    	        data: {confirm: 'Вы уверены?'} %></td>
+
+	    </tr>
+	<% end %>
+</table>
