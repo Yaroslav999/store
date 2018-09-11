@@ -1,0 +1,19 @@
+<%= form_for :item, url: items_path do |f| %>
+	<div class="form-group">
+	  <%= f.label :Название_товара %><br>
+	  <%= f.text_field :name, class: 'form-control' %><br>  
+	</div>
+	<div class="form-group">
+	  <%= f.label :Текст_товара %><br>
+	  <%= f.text_area :body, class: 'form-control' %><br>  
+	</div>
+	<div class="form-group">
+	  <%= f.label :Цена_товара %><br>
+	  <%= f.text_field :price, class: 'form-control' %><br>  
+	</div>
+	<div class="form-group">
+		<%= f.submit 'Cохранить товар', class:'btn btn-info'%>
+	</div>
+
+<% end %>
+<td><%= link_to 'Назад', items_path %></td>

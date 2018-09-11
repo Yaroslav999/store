@@ -1,6 +1,7 @@
-<h1>Список товаров</h1>
-<p><%= link_to 'Добавить товар', new_item_path %></p>
-<table>
+<div class="container index-content">
+	<h1>Список товаров</h1>
+	<p><%= link_to 'Добавить товар', new_item_path %></p>
+<!--  <table>
 	<tr>
 		<th>Название</th>
 		<th>Описание</th>
@@ -18,4 +19,19 @@
 
 	    </tr>
 	<% end %>
-</table>
+</table>  -->
+	<article class="item-blocks">	
+		<% @items.each do |item| %>
+			<div class="items-block">
+			    <p><%= item.name.upcase %></p>
+			    <p><%= item.body.capitalize %></p>
+			    <p>Цена: <%= item.price %></p>
+			    <button type="button" class="btn btn-info">Добавить в корзину</button>
+	    		<p><%= link_to 'Удалить', item_path(item),
+	    	        method: :delete,
+	    	        data: {confirm: 'Вы уверены?'} %></p>		
+	    	    <p><%= link_to 'изменить', edit_item_path(item) %></p>	    
+			</div>
+		<% end %>
+	</article>
+</div>

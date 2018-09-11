@@ -1,21 +1,5 @@
-<h1>Новый товар</h1>
+<div class="container">
+	<h1>Добавить товар</h1>
 
-<%= form_for :item, url: items_path do |f| %>
-    <p>
-	  <%= f.label :Название_товара %><br>
-	  <%= f.text_field :name %><br>  
-	</p>
-	<p>
-	  <%= f.label :Текст_товара %><br>
-	  <%= f.text_area :body %><br>  
-	</p>
-	<p>
-	  <%= f.label :Цена_товара %><br>
-	  <%= f.text_field :price %><br>  
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
-
-<% end %>
-<td><%= link_to 'Назад', items_path %></td>
+	<%= render 'form'%>
+</div>

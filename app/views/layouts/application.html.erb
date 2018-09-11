@@ -10,6 +10,12 @@
   </head>
 
   <body>
+  <header class="header">
+    <ul class="menu">
+      <li><%= link_to 'Магазин', items_index_path  %></li>
+      <li><a href="#">О нас</a></li>
+    </ul>
+  </header>
     <%= yield %>
   </body>
 </html>
