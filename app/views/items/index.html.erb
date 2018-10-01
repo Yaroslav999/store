@@ -1,6 +1,7 @@
-<h1>Список товаров</h1>
-<p><%= link_to 'Добавить товар', new_item_path %></p>
-<table>
+<div class="container-fluid index-content">
+	<h1>Список товаров</h1>
+	<p><%= link_to 'Добавить товар', new_item_path %></p>
+<!--  <table>
 	<tr>
 		<th>Название</th>
 		<th>Описание</th>
@@ -18,4 +19,23 @@
 
 	    </tr>
 	<% end %>
-</table>
+</table>  -->
+	<div class="container">
+		<%= render 'shared/submenu' %>
+	</div>
+	<article class="item-blocks col-xl-8">	
+		<% @items.each do |item| %>
+			<div class="items-block col-xl-3">
+			    <p class="img-items">	<%= image_tag item.image.url(:thumb), class: 'img-thumbnail thumb' if item.image? %> </p>
+			    <p><%= link_to item.name.upcase, item_path(item) %></p>
+			    <p><%= item.body.capitalize if item.body %></p>
+			    <p>Цена: <%= item.price if item.price %></p>
+			    <button type="button" class="btn btn-info">Добавить в корзину</button>
+	    		<p><%= link_to 'Удалить', item_path(item),
+	    	        method: :delete,
+	    	        data: {confirm: 'Вы уверены?'} %></p>		
+	    	    <p><%= link_to 'изменить', edit_item_path(item) %></p>	    
+			</div>
+		<% end %>
+	</article>
+</div>

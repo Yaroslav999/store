@@ -1,0 +1,37 @@
+<% if @item.errors.any? %>
+	<div class="alert alert-danger">
+		<h5><%= t('common.errors') %>/h5>
+		<ul>
+			<% @item .errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<%= form_for @item do |f| %>
+	<div class="form-group">
+	  <%= f.label :Название_товара %><br>
+	  <%= f.text_field :name, class: 'form-control' %><br>  
+	</div>
+	<div class="form-group">
+	  <%= f.label :Текст_товара %><br>
+	  <%= f.trix_editor :body, class: 'editor' %><br>  
+	</div>
+	<div class="form-group">
+	  <%= f.label :Цена_товара %><br>
+	  <%= f.text_field :price, class: 'form-control' %><br>  
+	</div>
+	<div class="form-group">
+	  <%= f.label :Категория %><br>
+	  <%= f.collection_select :category_id, Category.order(:name), :id, :name, {include_blank: true}, class: 'form-control' %><br>  
+	</div>
+	<div class="form-group">
+	  <%= f.file_field :image, class: 'form-control' %><br>  
+	</div>
+	<div class="form-group">
+		<%= f.submit 'Cохранить товар', class:'btn btn-info'%>
+	</div>
+
+<% end %>
+<td><%= link_to 'Назад', items_path %></td>

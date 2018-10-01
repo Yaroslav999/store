@@ -10,6 +10,19 @@
   </head>
 
   <body>
+  <header class="header">
+    <ul class="menu nav">
+      <li class="nav-item"><%= link_to 'Магазин', items_path  %></li>
+      <li><a href="#">О нас</a></li>
+    </ul>
+  </header>
+  <div class="row">
+    <% flash.each do |name, message| %>
+      <div class="alert alert-success">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
     <%= yield %>
   </body>
 </html>
