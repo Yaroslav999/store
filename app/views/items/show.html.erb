@@ -1,12 +1,22 @@
-<h1>
-	<strong><%= @item.name %></strong>
-</h1>
+<div class="container">
+	<h1>
+		<strong><%= @item.name %></strong>
+	</h1>
+ <% if @item.category.present? %>
+	<h2>
+		<strong>Категория: <%= @item.category.name %></strong>
+	</h2>
+<% end %>
 
-<p>
-	<%= @item.body %>
-</p>
+	<p class="img-item">
+		<img src="<%= @item.image %>"> 
+	</p>
+	<p>
+		<%= @item.body %>
+	</p>
 
-<p>
-	<strong>Цена</strong>
-	<%= @item.price %>
-</p>
+	<p>
+		<strong>Цена</strong>
+		<%= @item.price %>
+	</p>	
+</div> 

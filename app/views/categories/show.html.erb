@@ -1,0 +1,17 @@
+<h1><%= @category.name%></h1>
+
+<article class="item-blocks">	
+	<% @items.each do |item| %>
+		<div class="items-block">
+		    <p class="img-items">	<%= image_tag item.image.url(:thumb), class: 'img-thumbnail thumb' if item.image? %> </p>
+		    <p><%= link_to item.name.upcase, item_path(item) %></p>
+		    <p><%= item.body.capitalize if item.body %></p>
+		    <p>Цена: <%= item.price if item.price %></p>
+		    <button type="button" class="btn btn-info">Добавить в корзину</button>
+    		<p><%= link_to 'Удалить', item_path(item),
+    	        method: :delete,
+    	        data: {confirm: 'Вы уверены?'} %></p>		
+    	    <p><%= link_to 'изменить', edit_item_path(item) %></p>	    
+		</div>
+	<% end %>
+</article>
